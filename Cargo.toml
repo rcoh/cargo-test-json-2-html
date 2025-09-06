@@ -2,6 +2,11 @@
 name = "cargo-test-json-2-html"
 version = "0.1.0"
 edition = "2024"
+description = "Convert cargo test JSON output to beautiful, self-contained HTML reports"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/rcoh/cargo-test-json-2-html"
+keywords = ["cargo", "test", "html", "report"]
+categories = ["development-tools"]
 
 [dependencies]
 bon = "3.7.2"
