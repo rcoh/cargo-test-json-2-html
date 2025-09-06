@@ -44,6 +44,8 @@
         .test-details { padding: 0 15px 15px; border-top: 1px solid #e2e8f0; display: none; }
         .test-details.show { display: block; }
         .test-output { background: #1e293b; color: #e2e8f0; padding: 15px; border-radius: 4px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; white-space: pre-wrap; overflow-x: auto; }
+        .test-output a { color: #60a5fa; text-decoration: underline; }
+        .test-output a:hover { color: #93c5fd; }
         .errors { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 15px; }
         .error-item { margin-bottom: 10px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; }
         .raw-lines { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px; }
@@ -101,7 +103,7 @@
                     </div>
                     {{#if stdout}}
                     <div class="test-details">
-                        <div class="test-output">{{stdout}}</div>
+                        <div class="test-output">{{{stdout}}}</div>
                     </div>
                     {{/if}}
                 </div>
@@ -127,7 +129,7 @@
                     </div>
                     {{#if stdout}}
                     <div class="test-details">
-                        <div class="test-output">{{stdout}}</div>
+                        <div class="test-output">{{{stdout}}}</div>
                     </div>
                     {{/if}}
                 </div>

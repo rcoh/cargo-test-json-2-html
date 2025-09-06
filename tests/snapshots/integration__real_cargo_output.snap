@@ -35,13 +35,10 @@ expression: html
         .test-header { padding: 15px; display: flex; justify-content: space-between; align-items: center; }
         .test-header.clickable { cursor: pointer; transition: background-color 0.2s; }
         .test-header.clickable:hover { background: #f1f5f9; }
-        .test-header.clickable::after { 
-            content: "👁️ View output"; 
-            font-size: 12px; 
-            color: #6b7280; 
-            margin-left: 10px;
-        }
-        .test-header.clickable:hover::after { color: #374151; }
+        
+        .test-right { display: flex; align-items: center; gap: 10px; }
+        .view-output { font-size: 12px; color: #6b7280; opacity: 0; transition: opacity 0.2s; }
+        .test-header.clickable:hover .view-output { opacity: 1; color: #374151; }
         
         .test-name { font-family: 'Monaco', 'Menlo', monospace; font-size: 14px; }
         .test-status { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; }
@@ -51,6 +48,8 @@ expression: html
         .test-details { padding: 0 15px 15px; border-top: 1px solid #e2e8f0; display: none; }
         .test-details.show { display: block; }
         .test-output { background: #1e293b; color: #e2e8f0; padding: 15px; border-radius: 4px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; white-space: pre-wrap; overflow-x: auto; }
+        .test-output a { color: #60a5fa; text-decoration: underline; }
+        .test-output a:hover { color: #93c5fd; }
         .errors { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 15px; }
         .error-item { margin-bottom: 10px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; }
         .raw-lines { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px; }
@@ -93,16 +92,19 @@ expression: html
                 <div class="test-item">
                     <div class="test-header clickable" onclick="toggleDetails(this)">
                         <span class="test-name">tests::test_fail</span>
-                        <span class="test-status failed">FAILED</span>
+                        <div class="test-right">
+                            <span class="view-output">👁️ View output</span>
+                            <span class="test-status failed">FAILED</span>
+                        </div>
                     </div>
                     <div class="test-details">
                         <div class="test-output">This test fails with stdout
 This test has stderr output
 
-thread &#x27;tests::test_fail&#x27; panicked at src/main.rs:18:9:
+thread &#x27;tests::test_fail&#x27; panicked at src/main.rs:91:9:
 assertion &#x60;left &#x3D;&#x3D; right&#x60; failed
   left: 4
- right: 5
+  right: 5
 note: run with &#x60;RUST_BACKTRACE&#x3D;1&#x60; environment variable to display a backtrace
 </div>
                     </div>
@@ -114,7 +116,10 @@ note: run with &#x60;RUST_BACKTRACE&#x3D;1&#x60; environment variable to display
                 <div class="test-item">
                     <div class="test-header clickable" onclick="toggleDetails(this)">
                         <span class="test-name">tests::test_pass</span>
-                        <span class="test-status passed">PASSED</span>
+                        <div class="test-right">
+                            <span class="view-output">👁️ View output</span>
+                            <span class="test-status passed">PASSED</span>
+                        </div>
                     </div>
                     <div class="test-details">
                         <div class="test-output">This test passes with stdout
@@ -129,20 +134,14 @@ This test has stderr output
                 <div class="test-item">
                     <div class="test-header">
                         <span class="test-name">tests::test_ignored</span>
-                        <span class="test-status ignored">IGNORED</span>
+                        <div class="test-right">
+                            <span class="test-status ignored">IGNORED</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
 
-            <div class="section">
-                <div class="section-title">📄 Raw Output</div>
-                <div class="raw-lines">
-                    <div class="raw-line">{ &quot;type&quot;: &quot;test&quot;, &quot;event&quot;: &quot;started&quot;, &quot;name&quot;: &quot;tests::test_fail&quot; }</div>
-                    <div class="raw-line">{ &quot;type&quot;: &quot;test&quot;, &quot;event&quot;: &quot;started&quot;, &quot;name&quot;: &quot;tests::test_ignored&quot; }</div>
-                    <div class="raw-line">{ &quot;type&quot;: &quot;test&quot;, &quot;event&quot;: &quot;started&quot;, &quot;name&quot;: &quot;tests::test_pass&quot; }</div>
-                </div>
-            </div>
         </div>
     </div>
 </body>

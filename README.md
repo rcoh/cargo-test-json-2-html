@@ -5,16 +5,20 @@ Convert cargo test JSON output to beautiful, self-contained HTML reports.
 ## Features
 
 - 🎨 **Beautiful HTML reports** - Clean, modern design with responsive layout
-- 📊 **Test statistics** - Pass/fail/ignored counts with execution time
+- 📊 **Test statistics** - Pass/fail/ignored counts
 - 🔍 **Detailed test output** - Collapsible stdout/stderr for each test
 - 🛡️ **Robust error handling** - Gracefully handles mixed JSON/non-JSON output
 - 📱 **Self-contained** - Single HTML file with inline CSS and JavaScript
-- 🔗 **Source linking** - Configurable source code links (coming soon)
+- 🔗 **Source linking** - Configurable source code links
+
+**[📋 Example Report](examples/test-report.html)**
 
 ## Installation
 
+Most users will probably want to integrate this as a library into an existing test runner system. However, absent of that, it is possible to run it as a CLI as well:
+
 ```bash
-cargo install cargo-test-json-2-html
+cargo install --locked cargo-test-json-2-html
 ```
 
 ## Usage
@@ -58,8 +62,8 @@ impl SourceLinker for GitHubLinker {
 }
 
 let config = Config::builder()
-    .source_linker(Box::new(GitHubLinker { 
-        repo: "user/repo".to_string() 
+    .source_linker(Box::new(GitHubLinker {
+        repo: "user/repo".to_string()
     }))
     .build();
 let html = convert_to_html(json_output, config);

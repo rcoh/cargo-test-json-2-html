@@ -1,0 +1,1 @@
+{ "type": "test", "name": "tests::test_fail", "event": "failed", "stdout": "thread 'tests::test_fail' panicked at src/main.rs:18:9:\nassertion failed\n" }

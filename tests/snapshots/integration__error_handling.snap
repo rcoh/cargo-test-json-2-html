@@ -35,13 +35,10 @@ expression: html
         .test-header { padding: 15px; display: flex; justify-content: space-between; align-items: center; }
         .test-header.clickable { cursor: pointer; transition: background-color 0.2s; }
         .test-header.clickable:hover { background: #f1f5f9; }
-        .test-header.clickable::after { 
-            content: "👁️ View output"; 
-            font-size: 12px; 
-            color: #6b7280; 
-            margin-left: 10px;
-        }
-        .test-header.clickable:hover::after { color: #374151; }
+        
+        .test-right { display: flex; align-items: center; gap: 10px; }
+        .view-output { font-size: 12px; color: #6b7280; opacity: 0; transition: opacity 0.2s; }
+        .test-header.clickable:hover .view-output { opacity: 1; color: #374151; }
         
         .test-name { font-family: 'Monaco', 'Menlo', monospace; font-size: 14px; }
         .test-status { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; }
@@ -51,6 +48,8 @@ expression: html
         .test-details { padding: 0 15px 15px; border-top: 1px solid #e2e8f0; display: none; }
         .test-details.show { display: block; }
         .test-output { background: #1e293b; color: #e2e8f0; padding: 15px; border-radius: 4px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; white-space: pre-wrap; overflow-x: auto; }
+        .test-output a { color: #60a5fa; text-decoration: underline; }
+        .test-output a:hover { color: #93c5fd; }
         .errors { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 15px; }
         .error-item { margin-bottom: 10px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; }
         .raw-lines { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px; }
@@ -93,7 +92,10 @@ expression: html
                 <div class="test-item">
                     <div class="test-header">
                         <span class="test-name">valid_test</span>
-                        <span class="test-status passed">PASSED</span>
+                        <div class="test-right">
+                            
+                            <span class="test-status passed">PASSED</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,15 +104,14 @@ expression: html
             <div class="section">
                 <div class="section-title">⚠️ Parsing Errors</div>
                 <div class="errors">
-                    <div class="error-item">Failed to parse JSON: missing field &#x60;event&#x60; - Line: { &quot;type&quot;: &quot;test&quot;, &quot;invalid&quot;: &quot;json&quot; }</div>
-                    <div class="error-item">Failed to parse JSON: key must be a string at line 1 column 3 - Line: { not json at all</div>
+                    <div class="error-item">Failed to parse JSON: expected value at line 1 column 16 - Line: { &quot;malformed&quot;: json }</div>
                 </div>
             </div>
 
             <div class="section">
                 <div class="section-title">📄 Raw Output</div>
                 <div class="raw-lines">
-                    <div class="raw-line">Some compilation output</div>
+                    <div class="raw-line">invalid json line</div>
                 </div>
             </div>
         </div>

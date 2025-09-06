@@ -1,0 +1,5 @@
+   Compiling test-project v0.1.0
+    Finished test [unoptimized + debuginfo] target(s) in 0.12s
+     Running unittests src/lib.rs (target/debug/deps/test_project-abc123)
+{ "type": "test", "name": "tests::simple_test", "event": "ok", "stdout": "test output\n" }
+{ "type": "suite", "event": "ok", "passed": 1, "failed": 0, "ignored": 0, "measured": 0, "filtered_out": 0, "exec_time": 0.001 }

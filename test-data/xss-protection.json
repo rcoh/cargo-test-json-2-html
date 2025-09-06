@@ -1,0 +1,1 @@
+{ "type": "test", "name": "tests::xss_test", "event": "failed", "stdout": "Error: <script>alert('xss')</script>\nthread 'test' panicked at src/main.rs:10:5:\nassertion failed" }

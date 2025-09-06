@@ -73,48 +73,40 @@ expression: html
                 <div class="stats-row">
                     <div class="stat-item">
                         <div class="stat-icon passed"></div>
-                        <div class="stat-text"><span class="stat-number">1</span> passed</div>
+                        <div class="stat-text"><span class="stat-number">0</span> passed</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-icon failed"></div>
-                        <div class="stat-text"><span class="stat-number">0</span> failed</div>
+                        <div class="stat-text"><span class="stat-number">1</span> failed</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-icon ignored"></div>
                         <div class="stat-text"><span class="stat-number">0</span> ignored</div>
                     </div>
-                    <div class="duration">⏱️ 0.001s</div>
                 </div>
             </div>
 
-
             <div class="section">
-                <div class="section-title">✅ Passed Tests</div>
+                <div class="section-title">❌ Failed Tests</div>
                 <div class="test-item">
                     <div class="test-header clickable" onclick="toggleDetails(this)">
-                        <span class="test-name">tests::simple_test</span>
+                        <span class="test-name">tests::xss_test</span>
                         <div class="test-right">
                             <span class="view-output">👁️ View output</span>
-                            <span class="test-status passed">PASSED</span>
+                            <span class="test-status failed">FAILED</span>
                         </div>
                     </div>
                     <div class="test-details">
-                        <div class="test-output">test output
-</div>
+                        <div class="test-output">Error: &lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;
+thread &#x27;test&#x27; panicked at src/main.rs:10:5:
+assertion failed</div>
                     </div>
                 </div>
             </div>
 
 
 
-            <div class="section">
-                <div class="section-title">📄 Raw Output</div>
-                <div class="raw-lines">
-                    <div class="raw-line">Compiling test-project v0.1.0</div>
-                    <div class="raw-line">Finished test [unoptimized + debuginfo] target(s) in 0.12s</div>
-                    <div class="raw-line">Running unittests src/lib.rs (target/debug/deps/test_project-abc123)</div>
-                </div>
-            </div>
+
         </div>
     </div>
 </body>
