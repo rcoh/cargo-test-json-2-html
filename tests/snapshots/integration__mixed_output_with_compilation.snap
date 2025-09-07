@@ -142,11 +142,17 @@ expression: html
 
 
             <div class="section">
-                <div class="section-title">📄 Raw Output</div>
+                <div class="section-title collapsible collapsed" onclick="toggleSection(this)">
+                    <div class="section-info">
+                        <span>📄 Raw Output</span>
+                    </div>
+                </div>
+                <div class="section-content collapsed">
                 <div class="raw-lines">
                     <div class="raw-line">Compiling test-project v0.1.0</div>
                     <div class="raw-line">Finished test [unoptimized + debuginfo] target(s) in 0.12s</div>
                     <div class="raw-line">Running unittests src/lib.rs (target/debug/deps/test_project-abc123)</div>
+                </div>
                 </div>
             </div>
         </div>

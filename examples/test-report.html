@@ -310,7 +310,12 @@ Response: {&quot;id&quot;:1,&quot;name&quot;:&quot;John Doe&quot;}</div>
 
 
             <div class="section">
-                <div class="section-title">📄 Raw Output</div>
+                <div class="section-title collapsible collapsed" onclick="toggleSection(this)">
+                    <div class="section-info">
+                        <span>📄 Raw Output</span>
+                    </div>
+                </div>
+                <div class="section-content collapsed">
                 <div class="raw-lines">
                     <div class="raw-line">{ &quot;type&quot;: &quot;test&quot;, &quot;event&quot;: &quot;started&quot;, &quot;name&quot;: &quot;auth::test_login_success&quot; }</div>
                     <div class="raw-line">{ &quot;type&quot;: &quot;test&quot;, &quot;event&quot;: &quot;started&quot;, &quot;name&quot;: &quot;auth::test_login_invalid_password&quot; }</div>
@@ -327,6 +332,7 @@ Response: {&quot;id&quot;:1,&quot;name&quot;:&quot;John Doe&quot;}</div>
                     <div class="raw-line">{ &quot;type&quot;: &quot;test&quot;, &quot;event&quot;: &quot;started&quot;, &quot;name&quot;: &quot;integration::test_performance&quot; }</div>
                     <div class="raw-line">{ &quot;type&quot;: &quot;test&quot;, &quot;event&quot;: &quot;started&quot;, &quot;name&quot;: &quot;security::test_sql_injection&quot; }</div>
                     <div class="raw-line">{ &quot;type&quot;: &quot;test&quot;, &quot;event&quot;: &quot;started&quot;, &quot;name&quot;: &quot;security::test_xss_protection&quot; }</div>
+                </div>
                 </div>
             </div>
         </div>

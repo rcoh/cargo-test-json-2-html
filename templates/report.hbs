@@ -214,11 +214,17 @@
 
             {{#if raw_lines}}
             <div class="section">
-                <div class="section-title">📄 Raw Output</div>
+                <div class="section-title collapsible collapsed" onclick="toggleSection(this)">
+                    <div class="section-info">
+                        <span>📄 Raw Output</span>
+                    </div>
+                </div>
+                <div class="section-content collapsed">
                 <div class="raw-lines">
                     {{#each raw_lines}}
                     <div class="raw-line">{{this}}</div>
                     {{/each}}
+                </div>
                 </div>
             </div>
             {{/if}}
