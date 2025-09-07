@@ -11,7 +11,7 @@ Convert cargo test JSON output to beautiful, self-contained HTML reports.
 - 📱 **Self-contained** - Single HTML file with inline CSS and JavaScript
 - 🔗 **Source linking** - Configurable source code links
 
-**[📋 Example Report](examples/test-report.html)**
+**[📋 Example Report](https://rcoh.github.io/cargo-test-json-2-html/examples/test-report.html)**
 
 ## Installation
 
