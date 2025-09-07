@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargo Test Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { background: #2563eb; color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+        .content { padding: 20px; }
+        
+        /* Improved summary design */
+        .summary { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 30px; }
+        .summary-title { font-size: 16px; font-weight: 600; color: #374151; margin-bottom: 15px; }
+        .stats-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .stat-item { display: flex; align-items: center; gap: 8px; }
+        .stat-icon { width: 16px; height: 16px; border-radius: 50%; }
+        .stat-icon.passed { background: #10b981; }
+        .stat-icon.failed { background: #ef4444; }
+        .stat-icon.ignored { background: #f59e0b; }
+        .stat-text { font-size: 14px; color: #374151; }
+        .stat-number { font-weight: 600; }
+        .duration { margin-left: auto; font-size: 14px; color: #6b7280; }
+        
+        .section { margin-bottom: 30px; }
+        .section-title { font-size: 18px; font-weight: 600; margin-bottom: 15px; color: #1e293b; }
+        .test-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 10px; }
+        
+        /* Improved clickable indication */
+        .test-header { padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .test-header.clickable { cursor: pointer; transition: background-color 0.2s; }
+        .test-header.clickable:hover { background: #f1f5f9; }
+        
+        .test-right { display: flex; align-items: center; gap: 10px; }
+        .view-output { font-size: 12px; color: #6b7280; opacity: 0; transition: opacity 0.2s; }
+        .test-header.clickable:hover .view-output { opacity: 1; color: #374151; }
+        
+        .test-name { font-family: 'Monaco', 'Menlo', monospace; font-size: 14px; }
+        .test-status { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; }
+        .test-status.passed { background: #dcfce7; color: #166534; }
+        .test-status.failed { background: #fecaca; color: #991b1b; }
+        .test-status.ignored { background: #fef3c7; color: #92400e; }
+        .test-details { padding: 0 15px 15px; border-top: 1px solid #e2e8f0; display: none; }
+        .test-details.show { display: block; }
+        .test-output { background: #1e293b; color: #e2e8f0; padding: 15px; border-radius: 4px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; white-space: pre-wrap; overflow-x: auto; }
+        .test-output a { color: #60a5fa; text-decoration: underline; }
+        .test-output a:hover { color: #93c5fd; }
+        .errors { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 15px; }
+        .error-item { margin-bottom: 10px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; }
+        .raw-lines { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px; }
+        .raw-line { font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; margin-bottom: 5px; }
+    </style>
+    <script>
+        function toggleDetails(element) {
+            const details = element.nextElementSibling;
+            details.classList.toggle('show');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Cargo Test Report</h1>
+        </div>
+        <div class="content">
+            <div class="summary">
+                <div class="summary-title">Test Results Summary</div>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-icon passed"></div>
+                        <div class="stat-text"><span class="stat-number">2</span> passed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon failed"></div>
+                        <div class="stat-text"><span class="stat-number">1</span> failed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon ignored"></div>
+                        <div class="stat-text"><span class="stat-number">0</span> ignored</div>
+                    </div>
+                    <div class="duration">⏱️ 0.034357292s</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">❌ Failed Tests</div>
+                <div class="test-item">
+                    <div class="test-header clickable" onclick="toggleDetails(this)">
+                        <span class="test-name">tests::test_convert_to_html_basic</span>
+                        <div class="test-right">
+                            <span class="view-output">👁️ View output</span>
+                            <span class="test-status failed">FAILED</span>
+                        </div>
+                    </div>
+                    <div class="test-details">
+                        <div class="test-output">
+thread 'tests::test_convert_to_html_basic' (6269748) panicked at <a href="https://github.com/rcoh/cargo-test-json-2-html/blob/master/src/lib.rs#L232" target="_blank">src/lib.rs:232:9</a>:
+assertion failed: html.contains("&lt;div class=\"stat-number\"&gt;1&lt;/div&gt;")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">✅ Passed Tests</div>
+                <div class="test-item">
+                    <div class="test-header">
+                        <span class="test-name">tests::test_mixed_content</span>
+                        <div class="test-right">
+                            
+                            <span class="test-status passed">PASSED</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <div class="test-header">
+                        <span class="test-name">tests::test_basic_parsing</span>
+                        <div class="test-right">
+                            
+                            <span class="test-status passed">PASSED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="section">
+                <div class="section-title">📄 Raw Output</div>
+                <div class="raw-lines">
+                    <div class="raw-line">Compiling aho-corasick v1.1.3</div>
+                    <div class="raw-line">Compiling regex-syntax v0.8.6</div>
+                    <div class="raw-line">Compiling regex-automata v0.4.10</div>
+                    <div class="raw-line">Compiling regex v1.11.2</div>
+                    <div class="raw-line">Compiling cargo-test-json-2-html v0.1.0 (/Users/rcoh/cargo-test-json-2-html)</div>
+                    <div class="raw-line">Finished &#x60;test&#x60; profile [unoptimized + debuginfo] target(s) in 3.34s</div>
+                    <div class="raw-line">Running unittests src/lib.rs (target/debug/deps/cargo_test_json_2_html-a937c787d4c3a1f4)</div>
+                    <div class="raw-line">{ &quot;type&quot;: &quot;test&quot;, &quot;event&quot;: &quot;started&quot;, &quot;name&quot;: &quot;tests::test_basic_parsing&quot; }</div>
+                    <div class="raw-line">{ &quot;type&quot;: &quot;test&quot;, &quot;event&quot;: &quot;started&quot;, &quot;name&quot;: &quot;tests::test_convert_to_html_basic&quot; }</div>
+                    <div class="raw-line">{ &quot;type&quot;: &quot;test&quot;, &quot;event&quot;: &quot;started&quot;, &quot;name&quot;: &quot;tests::test_mixed_content&quot; }</div>
+                    <div class="raw-line">error: test failed, to rerun pass &#x60;--lib&#x60;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
