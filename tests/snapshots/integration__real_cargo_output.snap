@@ -29,11 +29,19 @@ expression: html
         .stat-number { font-weight: 600; }
         .duration { margin-left: auto; font-size: 14px; color: #6b7280; }
         
-        .section { margin-bottom: 30px; }
-        .section-title { font-size: 18px; font-weight: 600; margin-bottom: 15px; color: #1e293b; }
-        .test-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 10px; }
-        
+        .section { margin-bottom: 30px; background: #fafbfc; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; }
+        .section-title { font-size: 18px; font-weight: 600; color: #1e293b; }
+        .section-title.collapsible { cursor: pointer; user-select: none; display: flex; justify-content: space-between; align-items: center; }
+        .section-title.collapsible:hover { color: #374151; }
+        .section-content { transition: max-height 0.3s ease; overflow: hidden; padding-top: 15px; }
+        .section-content.collapsed { max-height: 0; padding-top: 0; }
+        .section-title.collapsible .section-info { display: flex; align-items: center; gap: 8px; }
+        .section-title.collapsible::after { content: '▼'; font-size: 14px; transition: transform 0.2s; line-height: 1; }
+        .section-title.collapsible.collapsed::after { transform: rotate(-90deg); }
         /* Improved clickable indication */
+        .test-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 10px; }
+        .test-item:has(.test-details.show) { border-radius: 6px 6px 0 0; }
+        .test-details { border-top: 1px solid #e2e8f0; display: none; margin: 0 -1px -1px -1px; background: #1e293b; border-radius: 0 0 6px 6px; }
         .test-header { padding: 15px; display: flex; justify-content: space-between; align-items: center; }
         .test-header.clickable { cursor: pointer; transition: background-color 0.2s; }
         .test-header.clickable:hover { background: #f1f5f9; }
@@ -49,9 +57,8 @@ expression: html
         .test-status.passed { background: #dcfce7; color: #166534; }
         .test-status.failed { background: #fecaca; color: #991b1b; }
         .test-status.ignored { background: #fef3c7; color: #92400e; }
-        .test-details { padding: 0 15px 15px; border-top: 1px solid #e2e8f0; display: none; }
         .test-details.show { display: block; }
-        .test-output { background: #1e293b; color: #e2e8f0; padding: 15px; border-radius: 4px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; white-space: pre-wrap; overflow-x: auto; }
+        .test-output { color: #e2e8f0; padding: 15px; border-radius: 0; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; white-space: pre-wrap; overflow-x: auto; }
         .test-output a { color: #60a5fa; text-decoration: underline; }
         .test-output a:hover { color: #93c5fd; }
         .errors { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 15px; }
@@ -67,6 +74,12 @@ expression: html
         function toggleDetails(element) {
             const details = element.nextElementSibling;
             details.classList.toggle('show');
+        }
+        
+        function toggleSection(element) {
+            const content = element.nextElementSibling;
+            content.classList.toggle('collapsed');
+            element.classList.toggle('collapsed');
         }
     </script>
 </head>
@@ -102,7 +115,13 @@ expression: html
             </div>
 
             <div class="section">
-                <div class="section-title" id="failed-tests">❌ Failed Tests</div>
+                <div class="section-title collapsible" id="failed-tests" onclick="toggleSection(this)">
+                    <div class="section-info">
+                        <span>❌ Failed Tests</span>
+                        <span>(1)</span>
+                    </div>
+                </div>
+                <div class="section-content">
                 <div class="test-item">
                     <div class="test-header clickable" onclick="toggleDetails(this)">
                         <span class="test-name">tests::test_fail</span>
@@ -123,10 +142,17 @@ note: run with &#x60;RUST_BACKTRACE&#x3D;1&#x60; environment variable to display
 </div>
                     </div>
                 </div>
+                </div>
             </div>
 
             <div class="section">
-                <div class="section-title" id="passed-tests">✅ Passed Tests</div>
+                <div class="section-title collapsible collapsed" id="passed-tests" onclick="toggleSection(this)">
+                    <div class="section-info">
+                        <span>✅ Passed Tests</span>
+                        <span>(1)</span>
+                    </div>
+                </div>
+                <div class="section-content collapsed">
                 <div class="test-item">
                     <div class="test-header clickable" onclick="toggleDetails(this)">
                         <span class="test-name">tests::test_pass</span>
@@ -141,10 +167,17 @@ This test has stderr output
 </div>
                     </div>
                 </div>
+                </div>
             </div>
 
             <div class="section">
-                <div class="section-title" id="ignored-tests">⏭️ Ignored Tests</div>
+                <div class="section-title collapsible collapsed" id="ignored-tests" onclick="toggleSection(this)">
+                    <div class="section-info">
+                        <span>⏭️ Ignored Tests</span>
+                        <span>(1)</span>
+                    </div>
+                </div>
+                <div class="section-content collapsed">
                 <div class="test-item">
                     <div class="test-header">
                         <span class="test-name">tests::test_ignored</span>
@@ -152,6 +185,7 @@ This test has stderr output
                             <span class="test-status ignored">IGNORED</span>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
 
