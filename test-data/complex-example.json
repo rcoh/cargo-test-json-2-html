@@ -1,0 +1,32 @@
+{ "type": "suite", "event": "started", "test_count": 15 }
+{ "type": "test", "event": "started", "name": "auth::test_login_success" }
+{ "type": "test", "name": "auth::test_login_success", "event": "ok" }
+{ "type": "test", "event": "started", "name": "auth::test_login_invalid_password" }
+{ "type": "test", "name": "auth::test_login_invalid_password", "event": "failed", "stdout": "thread 'auth::test_login_invalid_password' panicked at src/auth.rs:45:9:\nassertion failed: `(left == right)`\n  left: `Err(InvalidPassword)`,\n right: `Ok(User { id: 1, name: \"test\" })`" }
+{ "type": "test", "event": "started", "name": "auth::test_logout" }
+{ "type": "test", "name": "auth::test_logout", "event": "ok" }
+{ "type": "test", "event": "started", "name": "database::test_connection" }
+{ "type": "test", "name": "database::test_connection", "event": "ok", "stdout": "Connected to database successfully\nRunning migrations..." }
+{ "type": "test", "event": "started", "name": "database::test_query_users" }
+{ "type": "test", "name": "database::test_query_users", "event": "failed", "stdout": "thread 'database::test_query_users' panicked at src/database.rs:123:5:\nDatabase connection failed: Connection refused (os error 111)" }
+{ "type": "test", "event": "started", "name": "api::test_get_user" }
+{ "type": "test", "name": "api::test_get_user", "event": "ok", "stdout": "GET /api/users/1\nStatus: 200 OK\nResponse: {\"id\":1,\"name\":\"John Doe\"}" }
+{ "type": "test", "event": "started", "name": "api::test_create_user" }
+{ "type": "test", "name": "api::test_create_user", "event": "ok" }
+{ "type": "test", "event": "started", "name": "api::test_delete_user" }
+{ "type": "test", "name": "api::test_delete_user", "event": "failed", "stdout": "thread 'api::test_delete_user' panicked at src/api.rs:89:9:\nassertion failed: response.status() == 204\nActual status: 500 Internal Server Error\nResponse body: Database error: foreign key constraint" }
+{ "type": "test", "event": "started", "name": "utils::test_hash_password" }
+{ "type": "test", "name": "utils::test_hash_password", "event": "ok" }
+{ "type": "test", "event": "started", "name": "utils::test_validate_email" }
+{ "type": "test", "name": "utils::test_validate_email", "event": "ok" }
+{ "type": "test", "event": "started", "name": "utils::test_generate_token" }
+{ "type": "test", "name": "utils::test_generate_token", "event": "ok", "stdout": "Generated token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." }
+{ "type": "test", "event": "started", "name": "integration::test_full_workflow" }
+{ "type": "test", "name": "integration::test_full_workflow", "event": "ignored" }
+{ "type": "test", "event": "started", "name": "integration::test_performance" }
+{ "type": "test", "name": "integration::test_performance", "event": "ignored" }
+{ "type": "test", "event": "started", "name": "security::test_sql_injection" }
+{ "type": "test", "name": "security::test_sql_injection", "event": "ok" }
+{ "type": "test", "event": "started", "name": "security::test_xss_protection" }
+{ "type": "test", "name": "security::test_xss_protection", "event": "failed", "stdout": "thread 'security::test_xss_protection' panicked at src/security.rs:67:9:\nXSS vulnerability detected: <script>alert('xss')</script> was not escaped" }
+{ "type": "suite", "event": "ok", "passed": 8, "failed": 4, "ignored": 2, "measured": 0, "filtered_out": 1, "exec_time": 2.456 }

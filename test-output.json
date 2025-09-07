@@ -1,0 +1,77 @@
+   Compiling fnv v1.0.7
+   Compiling getrandom v0.3.3
+   Compiling cfg-if v1.0.3
+   Compiling zerocopy v0.8.27
+   Compiling rustix v1.0.8
+   Compiling errno v0.3.13
+   Compiling bitflags v2.9.4
+   Compiling autocfg v1.5.0
+   Compiling fastrand v2.3.0
+   Compiling wait-timeout v0.2.1
+   Compiling bit-vec v0.8.0
+   Compiling darling_core v0.20.11
+   Compiling darling_core v0.21.3
+   Compiling quick-error v1.2.3
+   Compiling unarray v0.1.4
+   Compiling bit-set v0.8.0
+   Compiling lazy_static v1.5.0
+   Compiling num-traits v0.2.19
+   Compiling rand_core v0.9.3
+   Compiling rand_xorshift v0.4.0
+   Compiling rand v0.9.2
+   Compiling darling_macro v0.20.11
+   Compiling darling_macro v0.21.3
+   Compiling darling v0.20.11
+   Compiling darling v0.21.3
+   Compiling tempfile v3.21.0
+   Compiling derive_builder_core v0.20.2
+   Compiling rusty-fork v0.3.0
+   Compiling bon-macros v3.7.2
+   Compiling ppv-lite86 v0.2.21
+   Compiling derive_builder_macro v0.20.2
+   Compiling rand_chacha v0.9.0
+   Compiling proptest v1.7.0
+   Compiling derive_builder v0.20.2
+   Compiling handlebars v6.3.2
+   Compiling bon v3.7.2
+   Compiling cargo-test-json-2-html v0.1.0 (/Users/rcoh/cargo-test-json-2-html)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.34s
+     Running unittests src/lib.rs (target/debug/deps/cargo_test_json_2_html-3770b76abbb17ff3)
+{ "type": "suite", "event": "started", "test_count": 3 }
+{ "type": "test", "event": "started", "name": "tests::test_basic_parsing" }
+{ "type": "test", "event": "started", "name": "tests::test_intentionally_fails" }
+{ "type": "test", "event": "started", "name": "tests::test_mixed_content" }
+{ "type": "test", "name": "tests::test_intentionally_fails", "event": "ignored" }
+{ "type": "test", "name": "tests::test_mixed_content", "event": "ok" }
+{ "type": "test", "name": "tests::test_basic_parsing", "event": "ok" }
+{ "type": "suite", "event": "ok", "passed": 2, "failed": 0, "ignored": 1, "measured": 0, "filtered_out": 0, "exec_time": 0.000735666 }
+     Running unittests src/main.rs (target/debug/deps/cargo_test_json_2_html-65e3bcac70fabfd2)
+{ "type": "suite", "event": "started", "test_count": 3 }
+{ "type": "test", "event": "started", "name": "tests::test_fail" }
+{ "type": "test", "event": "started", "name": "tests::test_ignored" }
+{ "type": "test", "event": "started", "name": "tests::test_pass" }
+{ "type": "test", "name": "tests::test_fail", "event": "ignored" }
+{ "type": "test", "name": "tests::test_ignored", "event": "ignored" }
+{ "type": "test", "name": "tests::test_pass", "event": "ok", "stdout": "This test passes with stdout\nThis test has stderr output\n" }
+{ "type": "suite", "event": "ok", "passed": 1, "failed": 0, "ignored": 2, "measured": 0, "filtered_out": 0, "exec_time": 0.000165083 }
+     Running tests/integration.rs (target/debug/deps/integration-102fb603fa4930a0)
+{ "type": "suite", "event": "started", "test_count": 6 }
+{ "type": "test", "event": "started", "name": "convert_to_html_never_panics" }
+{ "type": "test", "event": "started", "name": "test_error_handling" }
+{ "type": "test", "event": "started", "name": "test_mixed_output_with_compilation" }
+{ "type": "test", "event": "started", "name": "test_real_cargo_output" }
+{ "type": "test", "event": "started", "name": "test_source_linking" }
+{ "type": "test", "event": "started", "name": "test_xss_protection" }
+stored new snapshot /Users/rcoh/cargo-test-json-2-html/tests/snapshots/integration__xss_protection.snap.new
+stored new snapshot /Users/rcoh/cargo-test-json-2-html/tests/snapshots/integration__error_handling.snap.new
+stored new snapshot /Users/rcoh/cargo-test-json-2-html/tests/snapshots/integration__real_cargo_output.snap.new
+stored new snapshot /Users/rcoh/cargo-test-json-2-html/tests/snapshots/integration__mixed_output_with_compilation.snap.new
+{ "type": "test", "name": "test_error_handling", "event": "failed", "stdout": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Snapshot Summary ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nSnapshot file: tests/snapshots/integration__error_handling.snap\nSnapshot: error_handling\nSource: tests/integration.rs:72\n────────────────────────────────────────────────────────────────────────────────\nExpression: html\n────────────────────────────────────────────────────────────────────────────────\n-old snapshot\n+new results\n────────────┬───────────────────────────────────────────────────────────────────\n   49    49 │         .errors { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 15px; }\n   50    50 │         .error-item { margin-bottom: 10px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; }\n   51    51 │         .raw-lines { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px; }\n   52    52 │         .raw-line { font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; margin-bottom: 5px; }\n         53 │+        \n         54 │+        @media (max-width: 600px) {\n         55 │+            .test-status { display: none; }\n         56 │+        }\n   53    57 │     </style>\n   54    58 │     <script>\n   55    59 │         function toggleDetails(element) {\n   56    60 │             const details = element.nextElementSibling;\n────────────┴───────────────────────────────────────────────────────────────────\nTo update snapshots run `cargo insta review`\nStopped on the first failure. Run `cargo insta test` to run all snapshots.\n\nthread 'test_error_handling' (6511101) panicked at /Users/rcoh/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/insta-1.43.2/src/runtime.rs:694:13:\nsnapshot assertion for 'error_handling' failed in line 72\n" }
+{ "type": "test", "name": "test_xss_protection", "event": "failed", "stdout": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Snapshot Summary ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nSnapshot file: tests/snapshots/integration__xss_protection.snap\nSnapshot: xss_protection\nSource: tests/integration.rs:36\n────────────────────────────────────────────────────────────────────────────────\nExpression: html\n────────────────────────────────────────────────────────────────────────────────\n-old snapshot\n+new results\n────────────┬───────────────────────────────────────────────────────────────────\n   49    49 │         .errors { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 15px; }\n   50    50 │         .error-item { margin-bottom: 10px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; }\n   51    51 │         .raw-lines { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px; }\n   52    52 │         .raw-line { font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; margin-bottom: 5px; }\n         53 │+        \n         54 │+        @media (max-width: 600px) {\n         55 │+            .test-status { display: none; }\n         56 │+        }\n   53    57 │     </style>\n   54    58 │     <script>\n   55    59 │         function toggleDetails(element) {\n   56    60 │             const details = element.nextElementSibling;\n────────────┴───────────────────────────────────────────────────────────────────\nTo update snapshots run `cargo insta review`\nStopped on the first failure. Run `cargo insta test` to run all snapshots.\n\nthread 'test_xss_protection' (6511105) panicked at /Users/rcoh/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/insta-1.43.2/src/runtime.rs:694:13:\nsnapshot assertion for 'xss_protection' failed in line 36\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n" }
+{ "type": "test", "name": "test_mixed_output_with_compilation", "event": "failed", "stdout": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Snapshot Summary ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nSnapshot file: tests/snapshots/integration__mixed_output_with_compilation.snap\nSnapshot: mixed_output_with_compilation\nSource: tests/integration.rs:63\n────────────────────────────────────────────────────────────────────────────────\nExpression: html\n────────────────────────────────────────────────────────────────────────────────\n-old snapshot\n+new results\n────────────┬───────────────────────────────────────────────────────────────────\n   49    49 │         .errors { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 15px; }\n   50    50 │         .error-item { margin-bottom: 10px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; }\n   51    51 │         .raw-lines { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px; }\n   52    52 │         .raw-line { font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; margin-bottom: 5px; }\n         53 │+        \n         54 │+        @media (max-width: 600px) {\n         55 │+            .test-status { display: none; }\n         56 │+        }\n   53    57 │     </style>\n   54    58 │     <script>\n   55    59 │         function toggleDetails(element) {\n   56    60 │             const details = element.nextElementSibling;\n────────────┴───────────────────────────────────────────────────────────────────\nTo update snapshots run `cargo insta review`\nStopped on the first failure. Run `cargo insta test` to run all snapshots.\n\nthread 'test_mixed_output_with_compilation' (6511102) panicked at /Users/rcoh/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/insta-1.43.2/src/runtime.rs:694:13:\nsnapshot assertion for 'mixed_output_with_compilation' failed in line 63\n" }
+{ "type": "test", "name": "test_real_cargo_output", "event": "failed", "stdout": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Snapshot Summary ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nSnapshot file: tests/snapshots/integration__real_cargo_output.snap\nSnapshot: real_cargo_output\nSource: tests/integration.rs:54\n────────────────────────────────────────────────────────────────────────────────\nExpression: html\n────────────────────────────────────────────────────────────────────────────────\n-old snapshot\n+new results\n────────────┬───────────────────────────────────────────────────────────────────\n   49    49 │         .errors { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 15px; }\n   50    50 │         .error-item { margin-bottom: 10px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; }\n   51    51 │         .raw-lines { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px; }\n   52    52 │         .raw-line { font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; margin-bottom: 5px; }\n         53 │+        \n         54 │+        @media (max-width: 600px) {\n         55 │+            .test-status { display: none; }\n         56 │+        }\n   53    57 │     </style>\n   54    58 │     <script>\n   55    59 │         function toggleDetails(element) {\n   56    60 │             const details = element.nextElementSibling;\n────────────┴───────────────────────────────────────────────────────────────────\nTo update snapshots run `cargo insta review`\nStopped on the first failure. Run `cargo insta test` to run all snapshots.\n\nthread 'test_real_cargo_output' (6511103) panicked at /Users/rcoh/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/insta-1.43.2/src/runtime.rs:694:13:\nsnapshot assertion for 'real_cargo_output' failed in line 54\n" }
+stored new snapshot /Users/rcoh/cargo-test-json-2-html/tests/snapshots/integration__source_linking.snap.new
+{ "type": "test", "name": "test_source_linking", "event": "failed", "stdout": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Snapshot Summary ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nSnapshot file: tests/snapshots/integration__source_linking.snap\nSnapshot: source_linking\nSource: tests/integration.rs:45\n────────────────────────────────────────────────────────────────────────────────\nExpression: html\n────────────────────────────────────────────────────────────────────────────────\n-old snapshot\n+new results\n────────────┬───────────────────────────────────────────────────────────────────\n   49    49 │         .errors { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 15px; }\n   50    50 │         .error-item { margin-bottom: 10px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; }\n   51    51 │         .raw-lines { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px; }\n   52    52 │         .raw-line { font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; margin-bottom: 5px; }\n         53 │+        \n         54 │+        @media (max-width: 600px) {\n         55 │+            .test-status { display: none; }\n         56 │+        }\n   53    57 │     </style>\n   54    58 │     <script>\n   55    59 │         function toggleDetails(element) {\n   56    60 │             const details = element.nextElementSibling;\n────────────┴───────────────────────────────────────────────────────────────────\nTo update snapshots run `cargo insta review`\nStopped on the first failure. Run `cargo insta test` to run all snapshots.\n\nthread 'test_source_linking' (6511104) panicked at /Users/rcoh/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/insta-1.43.2/src/runtime.rs:694:13:\nsnapshot assertion for 'source_linking' failed in line 45\n" }
+{ "type": "test", "name": "convert_to_html_never_panics", "event": "ok", "stdout": "proptest: FileFailurePersistence::SourceParallel set, but failed to find lib.rs or main.rs\n" }
+{ "type": "suite", "event": "failed", "passed": 1, "failed": 5, "ignored": 0, "measured": 0, "filtered_out": 0, "exec_time": 3.594338 }
+error: test failed, to rerun pass `--test integration`

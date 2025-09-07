@@ -1,5 +1,6 @@
 use cargo_test_json_2_html::{Config, SourceLinker, convert_to_html};
 use std::fs;
+use proptest::prelude::*;
 
 #[derive(Debug)]
 struct TestLinker;
@@ -10,6 +11,14 @@ impl SourceLinker for TestLinker {
             "https://github.com/test/repo/blob/main/{}#L{}",
             file, line
         ))
+    }
+}
+
+proptest! {
+    #[test]
+    fn convert_to_html_never_panics(input in ".*") {
+        let config = Config::default();
+        let _ = convert_to_html(&input, config);
     }
 }
 

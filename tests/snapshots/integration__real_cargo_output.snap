@@ -19,6 +19,8 @@ expression: html
         .summary-title { font-size: 16px; font-weight: 600; color: #374151; margin-bottom: 15px; }
         .stats-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
         .stat-item { display: flex; align-items: center; gap: 8px; }
+        .stat-item a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px; }
+        .stat-item a:hover { opacity: 0.8; }
         .stat-icon { width: 16px; height: 16px; border-radius: 50%; }
         .stat-icon.passed { background: #10b981; }
         .stat-icon.failed { background: #ef4444; }
@@ -37,8 +39,10 @@ expression: html
         .test-header.clickable:hover { background: #f1f5f9; }
         
         .test-right { display: flex; align-items: center; gap: 10px; }
-        .view-output { font-size: 12px; color: #6b7280; opacity: 0; transition: opacity 0.2s; }
-        .test-header.clickable:hover .view-output { opacity: 1; color: #374151; }
+        .view-output { font-size: 12px; color: #6b7280; transition: opacity 0.2s; }
+        .view-output.no-output { opacity: 0.6; }
+        .test-header:hover .view-output { color: #374151; }
+        .test-header:hover .view-output.no-output { opacity: 1; }
         
         .test-name { font-family: 'Monaco', 'Menlo', monospace; font-size: 14px; }
         .test-status { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; }
@@ -54,6 +58,10 @@ expression: html
         .error-item { margin-bottom: 10px; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; }
         .raw-lines { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px; }
         .raw-line { font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; margin-bottom: 5px; }
+        
+        @media (max-width: 600px) {
+            .test-status { display: none; }
+        }
     </style>
     <script>
         function toggleDetails(element) {
@@ -72,23 +80,29 @@ expression: html
                 <div class="summary-title">Test Results Summary</div>
                 <div class="stats-row">
                     <div class="stat-item">
-                        <div class="stat-icon passed"></div>
-                        <div class="stat-text"><span class="stat-number">1</span> passed</div>
+                        <a href="#passed-tests">
+                            <div class="stat-icon passed"></div>
+                            <div class="stat-text"><span class="stat-number">1</span> passed</div>
+                        </a>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-icon failed"></div>
-                        <div class="stat-text"><span class="stat-number">1</span> failed</div>
+                        <a href="#failed-tests">
+                            <div class="stat-icon failed"></div>
+                            <div class="stat-text"><span class="stat-number">1</span> failed</div>
+                        </a>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-icon ignored"></div>
-                        <div class="stat-text"><span class="stat-number">1</span> ignored</div>
+                        <a href="#ignored-tests">
+                            <div class="stat-icon ignored"></div>
+                            <div class="stat-text"><span class="stat-number">1</span> ignored</div>
+                        </a>
                     </div>
                     <div class="duration">⏱️ 0.000290792s</div>
                 </div>
             </div>
 
             <div class="section">
-                <div class="section-title">❌ Failed Tests</div>
+                <div class="section-title" id="failed-tests">❌ Failed Tests</div>
                 <div class="test-item">
                     <div class="test-header clickable" onclick="toggleDetails(this)">
                         <span class="test-name">tests::test_fail</span>
@@ -112,7 +126,7 @@ note: run with &#x60;RUST_BACKTRACE&#x3D;1&#x60; environment variable to display
             </div>
 
             <div class="section">
-                <div class="section-title">✅ Passed Tests</div>
+                <div class="section-title" id="passed-tests">✅ Passed Tests</div>
                 <div class="test-item">
                     <div class="test-header clickable" onclick="toggleDetails(this)">
                         <span class="test-name">tests::test_pass</span>
@@ -130,7 +144,7 @@ This test has stderr output
             </div>
 
             <div class="section">
-                <div class="section-title">⏭️ Ignored Tests</div>
+                <div class="section-title" id="ignored-tests">⏭️ Ignored Tests</div>
                 <div class="test-item">
                     <div class="test-header">
                         <span class="test-name">tests::test_ignored</span>

@@ -1,7 +1,3 @@
----
-source: tests/integration.rs
-expression: html
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,10 +35,8 @@ expression: html
         .test-header.clickable:hover { background: #f1f5f9; }
         
         .test-right { display: flex; align-items: center; gap: 10px; }
-        .view-output { font-size: 12px; color: #6b7280; transition: opacity 0.2s; }
-        .view-output.no-output { opacity: 0.6; }
-        .test-header:hover .view-output { color: #374151; }
-        .test-header:hover .view-output.no-output { opacity: 1; }
+        .view-output { font-size: 12px; color: #6b7280; opacity: 0; transition: opacity 0.2s; }
+        .test-header.clickable:hover .view-output { opacity: 1; color: #374151; }
         
         .test-name { font-family: 'Monaco', 'Menlo', monospace; font-size: 14px; }
         .test-status { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; }
@@ -82,7 +76,7 @@ expression: html
                     <div class="stat-item">
                         <a href="#passed-tests">
                             <div class="stat-icon passed"></div>
-                            <div class="stat-text"><span class="stat-number">0</span> passed</div>
+                            <div class="stat-text"><span class="stat-number">1</span> passed</div>
                         </a>
                     </div>
                     <div class="stat-item">
@@ -94,9 +88,10 @@ expression: html
                     <div class="stat-item">
                         <a href="#ignored-tests">
                             <div class="stat-icon ignored"></div>
-                            <div class="stat-text"><span class="stat-number">0</span> ignored</div>
+                            <div class="stat-text"><span class="stat-number">1</span> ignored</div>
                         </a>
                     </div>
+                    <div class="duration">⏱️ 0.000290792s</div>
                 </div>
             </div>
 
@@ -111,14 +106,48 @@ expression: html
                         </div>
                     </div>
                     <div class="test-details">
-                        <div class="test-output">thread &#x27;tests::test_fail&#x27; panicked at <a href="https://github.com/test/repo/blob/main/src/main.rs#L18" target="_blank">src/main.rs:18:9</a>:
-assertion failed
+                        <div class="test-output">This test fails with stdout
+This test has stderr output
+
+thread &#x27;tests::test_fail&#x27; panicked at src/main.rs:91:9:
+assertion &#x60;left &#x3D;&#x3D; right&#x60; failed
+  left: 4
+  right: 5
+note: run with &#x60;RUST_BACKTRACE&#x3D;1&#x60; environment variable to display a backtrace
 </div>
                     </div>
                 </div>
             </div>
 
+            <div class="section">
+                <div class="section-title" id="passed-tests">✅ Passed Tests</div>
+                <div class="test-item">
+                    <div class="test-header clickable" onclick="toggleDetails(this)">
+                        <span class="test-name">tests::test_pass</span>
+                        <div class="test-right">
+                            <span class="view-output">👁️ View output</span>
+                            <span class="test-status passed">PASSED</span>
+                        </div>
+                    </div>
+                    <div class="test-details">
+                        <div class="test-output">This test passes with stdout
+This test has stderr output
+</div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="section">
+                <div class="section-title" id="ignored-tests">⏭️ Ignored Tests</div>
+                <div class="test-item">
+                    <div class="test-header">
+                        <span class="test-name">tests::test_ignored</span>
+                        <div class="test-right">
+                            <span class="test-status ignored">IGNORED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </div>
