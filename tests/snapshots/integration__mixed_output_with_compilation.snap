@@ -73,13 +73,25 @@ expression: html
     <script>
         function toggleDetails(element) {
             const details = element.nextElementSibling;
+            const wasVisible = details.classList.contains('show');
             details.classList.toggle('show');
+            
+            // Keep the clicked element in view if we're expanding
+            if (!wasVisible) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         }
         
         function toggleSection(element) {
             const content = element.nextElementSibling;
+            const wasCollapsed = content.classList.contains('collapsed');
             content.classList.toggle('collapsed');
             element.classList.toggle('collapsed');
+            
+            // Keep the section header in view if we're expanding
+            if (wasCollapsed) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         }
     </script>
 </head>
